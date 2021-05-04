@@ -1,9 +1,9 @@
 const knexfile = {
   client: 'postgresql',
   connection: {
-    database: 'assistance',
+    database: 'db',
     user: 'postgres',
-    password: '350664'
+    password: 'password'
   },
   pool: {
     min: 2,
