@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "rootDir": "./",
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots" : ["src/@types"],
+    "lib": ["es2017"],                        /* Specify library files to be included in the compilation. */
+    "allowJs": true,                          /* Allow javascript files to be compiled. */
+    "noEmit": true,                           /* Do not emit outputs. */
+    "moduleResolution": "node",               /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "baseUrl": "src/*",                       /* Base directory to resolve non-absolute module names. */
+    "paths": {
+      "*": ["src/*"],
+      "tests": ["src/__tests__/*"],
+    },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    "allowSyntheticDefaultImports": true,     /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
+    "skipLibCheck": false                      /* Skip type checking of declaration files. */
+  },
+  "include": ["src/@types/consign.d.ts"],
+  "exclude": [
+    "node_modules", "babel.config.js", "metro.config.js", "jest.config.js"
+  ],
+}
