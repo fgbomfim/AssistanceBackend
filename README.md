@@ -1,11 +1,17 @@
 # AssistanceBackend
 
-## DB
+## Frist steps
+1. Go to root of project and create file named ``.env``
+2. Create the key value below and paste on ``.env`` with your environment.
 
-Create file .env in root
-Add key values below
+````
 DB_NAME=your_db_name
 DB_PASSWORD=your_db_password
 DB_USER=your_db_user
 DB_CLIENT=your_db_client
 SALT_KEY=your_salt_key
+````
+3. Run ``yarn install`` and wait install all packages
+4. Run ``yarn start`` to start server
+5. Run ``yarn test`` to exec unit tests
+6. Run ``yarn test:coverage`` to exec all unit tests and see coverage
