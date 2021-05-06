@@ -1,3 +1,7 @@
+import {config} from 'dotenv';
+
+config();
+
 const knexfile = {
   client: process.env.DB_CLIENT,
   connection: {
