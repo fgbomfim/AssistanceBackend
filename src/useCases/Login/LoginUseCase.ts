@@ -9,17 +9,17 @@ export class LoginUseCase {
   constructor(
     private userRepository: IUserRepository,
     private encryptPassword: IEncryptPassword,
-    private encode: IEncode
+    private encode: IEncode,
   ) {}
 
   async execute(data: ILoginRequestDTO): Promise<ISigned> {
-    const user: User = await this.userRepository.findByEmail(data.email);
+    const user: User = await this.userRepository.auth(data.email);
     const hash = this.encryptPassword.encode(data.password);
 
     if (user?.password !== hash) {
       throw new Error('Bad credentials');
     } else {
-      const token = await this.encode.encode({ id: user.id, name: user.name}, 86400000);
+      const token = await this.encode.encode({id: user.id, name: user.name}, 86400000);
       const signed: ISigned = {
         name: user.name,
         token: token,

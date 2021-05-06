@@ -1,9 +1,13 @@
+import {config} from 'dotenv';
+
+config();
+
 const knexfile = {
-  client: 'postgresql',
+  client: process.env.DB_CLIENT,
   connection: {
-    database: 'assistance',
-    user: 'postgres',
-    password: '350664'
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
   },
   pool: {
     min: 2,

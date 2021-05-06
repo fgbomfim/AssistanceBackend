@@ -33,6 +33,8 @@ local.properties
 #
 .vscode/
 
+.env
+
 # node.js
 #
 node_modules/
@@ -44,6 +46,8 @@ buck-out/
 \.buckd/
 *.keystore
 !debug.keystore
+
+knexfile.ts
 
 # fastlane
 #

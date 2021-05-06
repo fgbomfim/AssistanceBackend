@@ -4,14 +4,14 @@ import { LoginUseCase } from "./LoginUseCase";
 
 export class LoginController {
   constructor(
-    private login: LoginUseCase,
+    private loginUseCase: LoginUseCase,
   ) {}
 
   async handle(request: Request, response: Response) {
     const { email, password } = request.body;
 
     try {
-      const user: ISigned = await this.login.execute({ email, password });
+      const user: ISigned = await this.loginUseCase.execute({ email, password });
 
       return response.status(201).send(user);
     } catch (err) {
