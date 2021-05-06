@@ -7,6 +7,12 @@ export class PostgresUserRepository implements IUserRepository {
     private db: Knex
   ) { }
 
+  async auth(email: string): Promise<User> {
+    return await this.db<User>('users')
+                        .where('email', email)
+                        .first();
+  }
+
   async findByEmail(email: string): Promise<User> {
     return this.db('users').where('email', email).select<User>();
   }
