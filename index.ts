@@ -1,7 +1,10 @@
 import express from 'express';
+import { config } from 'dotenv';
 import { json } from 'body-parser';
 import cors from 'cors';
 import { router } from './src/router';
+
+config();
 
 const PORT = 3000;
 const app = express();

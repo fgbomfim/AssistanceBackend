@@ -5,7 +5,7 @@ type callback = (password: string) => string;
 
 export class EncryptPassword implements IEncryptPassword {
   encode(password: string): string {
-    const hash = md5(`${password}$Mirian${password}$Sofia$${password}Helena${password}`);
+    const hash = md5(`${process.env.SALT_KEY}${password}`);
 
     return hash;
   };

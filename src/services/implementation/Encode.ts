@@ -12,5 +12,4 @@ export class Encode implements IEncode {
   }
 
   decode: <T>(encoded: string) => T;
-
 }
