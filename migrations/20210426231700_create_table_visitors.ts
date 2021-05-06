@@ -3,7 +3,7 @@ import knex, { Knex } from 'knex';
 export async function up(knex: Knex): Promise<any> {
   return knex.schema.createTable('visitors', (table: Knex.TableBuilder) => {
     table.string('id').primary()
-    table.integer('assistanceId').references('id').inTable('assistance').notNullable()
+    table.string('assistanceId').references('id').inTable('assistance').notNullable()
     table.string('name').notNullable()
   });
 }
