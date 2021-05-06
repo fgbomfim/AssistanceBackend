@@ -12,8 +12,9 @@ export class AssistanceRepository implements IAssistanceRepository {
 
     return await this.db.select("*").from("assistance.assistance").offset(offset).limit(size);
   }
-  findById(id: string): Promise<Assistance> {
-    return this.db('assistance').where('id', id).select<Assistance>().first();
+
+  async findById(id: string): Promise<Assistance> {
+    return await this.db('assistance').where('id', id).select<Assistance>().first();
   }
 
   async save(assistance: Assistance): Promise<void> {
