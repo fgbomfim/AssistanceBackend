@@ -19,7 +19,6 @@ export class VisitorRepository implements IVisitorRepository {
 
       return Promise.reject('Error when insert visitor');
     }
-
   }
 
   async find(idAssistance: string): Promise<Visitor[]> {
