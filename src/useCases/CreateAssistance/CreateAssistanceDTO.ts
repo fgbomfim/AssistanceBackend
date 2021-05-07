@@ -1,22 +1,9 @@
-export interface IVisitorDTO {
+import { IAssistance } from "../../interfaces/IAssistance";
+
+interface IVisitorDTO {
   name: string;
 }
 
-export interface IAssistanceDTO {
-  girls: number;
-  boys: number;
-  littleLady: number;
-  youthMan: number;
-  elders: number;
-  deacons: number;
-  officialCoWorker: number;
-  youthCoWorker: number;
-  localSupervisors: number;
-  regionalSupervisors: number;
-  musician: number;
-  youthAssistant: number;
-  auxiliaryDoors: number;
-  brotherhood: number;
+export interface IAssistanceDTO extends IAssistance {
   visitors: IVisitorDTO[];
-  date: string;
 }

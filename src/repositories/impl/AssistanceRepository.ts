@@ -1,5 +1,6 @@
 import { Knex } from "knex";
 import { Assistance } from "../../entities/Assistance";
+import { PagedAssistance } from "../../entities/PagedAssistance";
 import { IAssistanceRepository } from "../IAssistanceRepository";
 
 export class AssistanceRepository implements IAssistanceRepository {
@@ -7,10 +8,10 @@ export class AssistanceRepository implements IAssistanceRepository {
     private db: Knex,
   ) {}
 
-  async find(page: number, size: number): Promise<Assistance[]> {
+  async find(page: number, size: number): Promise<PagedAssistance[]> {
     const offset = (page - 1) * size;
 
-    return await this.db.select("*").from("assistance.assistance").offset(offset).limit(size);
+    return await this.db('assistance').limit(size).offset(offset).select('id', 'date');
   }
 
   async findById(id: string): Promise<Assistance> {
