@@ -1,5 +1,6 @@
 import { Knex } from "knex";
 import { Assistance } from "../../entities/Assistance";
+import { AssistanceAndVisitors } from "../../entities/AssistanceAndVisitors";
 import { PagedAssistance } from "../../entities/PagedAssistance";
 import { IAssistanceRepository } from "../IAssistanceRepository";
 
@@ -14,8 +15,8 @@ export class AssistanceRepository implements IAssistanceRepository {
     return await this.db('assistance').limit(size).offset(offset).select('id', 'date');
   }
 
-  async findById(id: string): Promise<Assistance> {
-    return await this.db('assistance').where('id', id).select<Assistance>().first();
+  async findById(id: string): Promise<any> {
+    return this.db.select(["assistance.*", "visitors.name as visitors_name"]).table('assistance').innerJoin('visitors', 'visitors.assistanceId', 'visitors.id').where("assistance.id", id);
   }
 
   async save(assistance: Assistance): Promise<void> {
