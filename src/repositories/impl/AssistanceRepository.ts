@@ -9,10 +9,10 @@ export class AssistanceRepository implements IAssistanceRepository {
     private db: Knex,
   ) {}
 
-  async find(page: number, size: number): Promise<PagedAssistance[]> {
+  async find(page: number, size: number): Promise<Assistance[]> {
     const offset = (page - 1) * size;
 
-    return await this.db('assistance').limit(size).offset(offset).select('id', 'date');
+    return await this.db('assistance').limit(size).offset(offset).select('*');
   }
 
   async findById(id: string): Promise<any> {

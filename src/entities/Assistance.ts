@@ -1,4 +1,5 @@
 import { uuid } from "uuidv4";
+import { Visitor } from "./Visitor";
 
 export class Assistance {
   public id: string;
@@ -17,6 +18,7 @@ export class Assistance {
   public auxiliaryDoors: number;
   public brotherhood: number;
   public date: string;
+  public visitors?: Visitor[];
 
   constructor(props: Omit<Assistance, 'id'>, id?: string) {
     Object.assign(this, props);

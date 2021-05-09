@@ -22,7 +22,7 @@ export class VisitorRepository implements IVisitorRepository {
   }
 
   async find(idAssistance: string): Promise<Visitor[]> {
-    return await this.db('visitors').where('assistanceId', idAssistance).select<Visitor[]>();
+    return await this.db('visitors').where('assistanceId', idAssistance).select<Visitor[]>('name', 'id');
   }
 
 }

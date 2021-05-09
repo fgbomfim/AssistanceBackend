@@ -1,13 +1,28 @@
+import { Visitor } from "../../entities/Visitor";
 import { IPagedSearch } from "../../interfaces/IPagedSearch";
 import { IAssistanceRepository } from "../../repositories/IAssistanceRepository";
-import { IPagedAssistanceDTO } from "./PagedSearchDTO";
+import { IVisitorRepository } from "../../repositories/IVisitorRepository";
+import { IPagedAssistanceDTO, IVisitorDTO } from "./PagedSearchDTO";
 
 export class PagedSearchUseCase {
   constructor(
     private assistanceRepository: IAssistanceRepository,
+    private visitorRepository: IVisitorRepository,
   ) {}
 
-  async execute(data: IPagedSearch): Promise<IPagedAssistanceDTO[]> {
-    return await this.assistanceRepository.find(data.page, data.size);
+  async execute({ page, size }: IPagedSearch): Promise<IPagedAssistanceDTO[]> {
+    const assistance = await this.assistanceRepository.find(page, size);
+
+    for (let index = 0; index < assistance.length; index++) {
+      assistance[index].visitors = await this.execVisitor(assistance[index].id);
+    }
+
+    console.log(assistance);
+
+    return assistance;
+  }
+
+  async execVisitor(assistanceId: string): Promise<Visitor[]> {
+    return await this.visitorRepository.find(assistanceId);
   }
 }
