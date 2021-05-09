@@ -17,8 +17,6 @@ export class PagedSearchUseCase {
       assistance[index].visitors = await this.execVisitor(assistance[index].id);
     }
 
-    console.log(assistance);
-
     return assistance;
   }
 
