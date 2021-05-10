@@ -2,7 +2,7 @@ import { Visitor } from "../../entities/Visitor";
 import { IPagedSearch } from "../../interfaces/IPagedSearch";
 import { IAssistanceRepository } from "../../repositories/IAssistanceRepository";
 import { IVisitorRepository } from "../../repositories/IVisitorRepository";
-import { IPagedAssistanceDTO, IVisitorDTO } from "./PagedSearchDTO";
+import { IPagedAssistanceDTO } from "./PagedSearchDTO";
 
 export class PagedSearchUseCase {
   constructor(

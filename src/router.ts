@@ -1,15 +1,14 @@
-import { request, Router } from "express";
+import { Router } from "express";
 import { createUserController } from "./useCases/CreateUser";
 import { loginController } from "./useCases/Login";
 import { createAssistanceController } from "./useCases/CreateAssistance"
 import { pagedSearchController } from "./useCases/PagedSearchAssistance";
-import { SearchAssistanceUseCase } from "./useCases/SearchAssistance/SearchAssistanceUseCase";
 import { searchAssistanceController } from "./useCases/SearchAssistance";
 
 const router = Router();
 
 router
-  .post('/users', (request, response) => {
+  .post('/users/signup', (request, response) => {
     return createUserController.handle(request, response);
   })
   .post('/oauth2/v1/signin', (request, response) => {

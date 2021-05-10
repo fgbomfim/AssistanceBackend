@@ -1,7 +1,4 @@
-export interface IVisitorDTO {
-  id: string;
-  name: string;
-}
+import { Visitor } from "../../entities/Visitor";
 
 export interface IPagedAssistanceDTO {
   id: string;
