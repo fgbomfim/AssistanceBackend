@@ -1,4 +1,5 @@
 import { User } from "../../entities/User";
+import { UserStateEnum } from "../../entities/UserStateEnum";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { IEncryptPassword } from "../../services/IEncryptPassword";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
@@ -21,7 +22,11 @@ export class CreateUserUseCase {
     const user = new User({
       ...data,
       password: hash,
+      status: UserStateEnum.INACTIVE,
     });
+
+    console.log('users', user);
+
 
     await this.userRepository.save(user);
   }

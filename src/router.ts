@@ -11,6 +11,9 @@ router
   .post('/users/signup', (request, response) => {
     return createUserController.handle(request, response);
   })
+  .put('/users/:id/active', (request, response) => {
+    return createUserController.handle(request, response);
+  })
   .post('/oauth2/v1/signin', (request, response) => {
     return loginController.handle(request, response);
   })
