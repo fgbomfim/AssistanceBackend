@@ -26,6 +26,13 @@ export class UserRepository implements IUserRepository {
     return this.db('users').where('email', email).select<User>();
   }
 
+  async find(page: number, size: number): Promise<User[]> {
+    const offset = (page - 1) * size;
+
+    return await this.db('users').limit(size).offset(offset).select('users.id', 'users.name', 'users.email', 'users.status');
+  }
+
+
   async save({ email, id, name, password, status }: User): Promise<void> {
     try {
       await this.db('users').insert({id: id, name: name, email: email, password: password, status: status});
